@@ -3,7 +3,7 @@
 by Mark Geurts <mark.w.geurts@gmail.com>
 <br>Copyright &copy; 2017, University of Wisconsin Board of Regents
 
-ImageViewer is a MATLAB class that creates TCS plots of CT and Dose data. One ImageViewer object is created for each plot (in the T, C, or S dimension). Image and dose data is passed to this object using the same structure format detailed in the [tomo_extract](https://github.com/mwgeurts/tomo_extract) functions `LoadImage.m` and  `oadPlanDose.m`. In addition, a slider UI handle can optionally be linked to the TCS image to control what slice is currently being viewed.
+ImageViewer is a MATLAB class that creates TCS plots of CT and Dose data. One ImageViewer object is created for each plot (in the T, C, or S dimension). Image and dose data is passed to this object using the same structure format detailed in the [tomo_extract](https://github.com/mwgeurts/tomo_extract) functions `LoadImage.m` and  `LoadPlanDose.m`. In addition, a slider UI handle can optionally be linked to the TCS image to control what slice is currently being viewed.
 
 For more information on how this class is used, or to see it in action, see the application [CheckTomo](https://github.com/mwgeurts/checktomo).
 
