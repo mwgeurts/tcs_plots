@@ -40,6 +40,8 @@ for i = 1:2:length(varargin)
         obj.overlayrange = [];
     elseif strcmpi(varargin{i}, 'overlayrange')
         obj.overlayrange = varargin{i+1};
+    elseif strcmpi(varargin{i}, 'tcsview')
+        obj.tcsview = varargin{i+1};
     end
 end
 
