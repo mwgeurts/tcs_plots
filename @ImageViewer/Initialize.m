@@ -41,6 +41,7 @@ for i = 1:2:length(varargin)
     if strcmpi(varargin{i}, 'background')
         obj.background = varargin{i+1};
         obj.backgroundrange = [];
+        obj.slice = [];
         resetzoom = 1;
     elseif strcmpi(varargin{i}, 'backgroundrange')
         obj.backgroundrange = varargin{i+1};
@@ -51,6 +52,7 @@ for i = 1:2:length(varargin)
         obj.overlayrange = varargin{i+1};
     elseif strcmpi(varargin{i}, 'tcsview')
         obj.tcsview = varargin{i+1};
+        obj.slice = [];
         resetzoom = 1;
     elseif strcmpi(varargin{i}, 'resetzoom')
         resetzoom = varargin{i+1};
