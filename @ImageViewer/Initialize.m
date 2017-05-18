@@ -31,6 +31,9 @@ function varargout = Initialize(obj, varargin)
 % You should have received a copy of the GNU General Public License along 
 % with this program. If not, see http://www.gnu.org/licenses/.
 
+% Declare rest zoom flag
+resetzoom = 0;
+
 % Apply variable input arguments
 for i = 1:2:length(varargin)
     
@@ -38,6 +41,7 @@ for i = 1:2:length(varargin)
     if strcmpi(varargin{i}, 'background')
         obj.background = varargin{i+1};
         obj.backgroundrange = [];
+        resetzoom = 1;
     elseif strcmpi(varargin{i}, 'backgroundrange')
         obj.backgroundrange = varargin{i+1};
     elseif strcmpi(varargin{i}, 'overlay')
@@ -47,6 +51,9 @@ for i = 1:2:length(varargin)
         obj.overlayrange = varargin{i+1};
     elseif strcmpi(varargin{i}, 'tcsview')
         obj.tcsview = varargin{i+1};
+        resetzoom = 1;
+    elseif strcmpi(varargin{i}, 'resetzoom')
+        resetzoom = varargin{i+1};
     end
 end
 
@@ -363,7 +370,10 @@ if exist('Event', 'file') == 2
 end
 
 % Call Update class function
-obj.Update();
+obj.Update('resetzoom', resetzoom);
+
+% Clear temporary variables
+clear resetzoom;
 
 % If return argument exists
 if nargout == 1
