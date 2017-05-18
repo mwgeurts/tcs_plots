@@ -34,8 +34,13 @@ function varargout = Initialize(obj, varargin)
 % Apply variable input arguments
 for i = 1:2:length(varargin)
     
-    % If the obj.overlay arguments were passed
-    if strcmpi(varargin{i}, 'overlay')
+    % If obj arguments were passed
+    if strcmpi(varargin{i}, 'background')
+        obj.background = varargin{i+1};
+        obj.backgroundrange = [];
+    elseif strcmpi(varargin{i}, 'backgroundrange')
+        obj.backgroundrange = varargin{i+1};
+    elseif strcmpi(varargin{i}, 'overlay')
         obj.overlay = varargin{i+1};
         obj.overlayrange = [];
     elseif strcmpi(varargin{i}, 'overlayrange')
