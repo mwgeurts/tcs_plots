@@ -21,6 +21,9 @@ function Update(obj, varargin)
 % You should have received a copy of the GNU General Public License along 
 % with this program. If not, see http://www.gnu.org/licenses/.
 
+% Declare temporary reset zoom flag
+resetzoom = 0;
+
 % Apply variable input arguments
 for i = 1:2:length(varargin)
     
@@ -31,6 +34,8 @@ for i = 1:2:length(varargin)
         obj.alpha = varargin{i+1};
     elseif strcmpi(varargin{i}, 'structuresonoff')
         obj.structuresonoff = varargin{i+1};
+    elseif strcmpi(varargin{i}, 'resetzoom')
+        resetzoom = varargin{i+1};
     end
 end
 
@@ -336,7 +341,7 @@ if strcmpi(obj.zoom, 'on')
     zoom on
 
     % Reset zoom and pan, if real values existed previously
-    if ~isequal(xlim, [0 1])
+    if ~isequal(xlim, [0 1]) && resetzoom == 0
         obj.axis.XLim = xlim;
         obj.axis.YLim = ylim;
     end
@@ -363,4 +368,4 @@ if ~isempty(obj.slider) && ishandle(obj.slider)
 end
 
 % Clear temporary variables
-clear i image width start xlim ylim;
+clear i image width start xlim ylim resetzoom;
