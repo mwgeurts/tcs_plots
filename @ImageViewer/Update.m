@@ -263,24 +263,24 @@ if iscell(obj.structures)
                 
                     % Use bwboundaries to generate X/Y contour points based
                     % on structure mask
-                    B = bwboundaries(squeeze(...
-                        obj.structures{i}.mask(:, :, obj.slice))');
+                    B = bwboundaries(round(squeeze(...
+                        obj.structures{i}.mask(:, :, obj.slice)))');
                     
                 % If orientation is Coronal
                 case 'C'
                 
                     % Use bwboundaries to generate X/Y contour points based
                     % on structure mask
-                    B = bwboundaries(squeeze(...
-                        obj.structures{i}.mask(:, obj.slice, :))');
+                    B = bwboundaries(round(squeeze(...
+                        obj.structures{i}.mask(:, obj.slice, :)))');
                     
                 % If orientation is Sagittal
                 case 'S'
                 
                     % Use bwboundaries to generate X/Y contour points based
                     % on structure mask
-                    B = bwboundaries(squeeze(...
-                        obj.structures{i}.mask(obj.slice, :, :))');
+                    B = bwboundaries(round(squeeze(...
+                        obj.structures{i}.mask(obj.slice, :, :)))');
             end
             
             % Loop through each contour set (typically this is one)
