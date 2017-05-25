@@ -75,10 +75,18 @@ for i = 1:length(obj.dose)
         % Loop through each reference structure
         for j = 1:length(obj.structures)
 
-            % Compute differential histogram
-            obj.dvh{i}(1:end-1,j) = histcounts(obj.dose{i}.data(...
-                obj.structures{j}.mask > 0), ...
-                obj.dvh{i}(:, length(obj.structures) + 1));
+            % Compute differential histogram, first with GPU, automatically
+            % failing over to CPU if there is an issue (either with memory
+            % or lack of GPU support)
+            try
+                obj.dvh{i}(1:end-1,j) = gather(histcounts(gpuArray(...
+                    obj.dose{i}.data(obj.structures{j}.mask > 0)), ...
+                    obj.dvh{i}(:, length(obj.structures) + 1)));
+            catch
+                obj.dvh{i}(1:end-1,j) = histcounts(obj.dose{i}.data(...
+                    obj.structures{j}.mask > 0), ...
+                    obj.dvh{i}(:, length(obj.structures) + 1));
+            end
 
             % If the type is relative
             if strcmpi(obj.volume, 'relative')
