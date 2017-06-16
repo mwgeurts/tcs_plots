@@ -118,7 +118,7 @@ if ~isempty(obj.axis) && isgraphics(obj.axis, 'Axes')
 end
 
 % If a DVH table is provided, update it
-if ~isempty(obj.table) && isgraphics(obj.table)
+if ~isempty(obj.table) && isgraphics(obj.table) && obj.columns > 2
     obj.UpdateTable();
 end
 
