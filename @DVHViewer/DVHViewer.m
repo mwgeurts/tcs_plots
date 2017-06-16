@@ -1,5 +1,5 @@
 classdef DVHViewer < handle
-% DVHViewer is a MATLAB class that creates a DVH plots RTSS and Dose data.
+% DVHViewer is a MATLAB class that calculates and plots DVHs.
 % Image and dose data is passed to this object using the same structure 
 % format detailed in the tomo_extract functions LoadStructures.m and 
 % LoadPlanDose.m. This class can support up to two different dose volumes.
