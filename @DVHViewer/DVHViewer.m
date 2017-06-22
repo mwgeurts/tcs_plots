@@ -42,6 +42,9 @@ properties (Access = protected)
     volume = 'relative'
     legend = []
     bins = 1001
+    xlabel = 'Dose (Gy)'
+    ylabel = 'Volume'
+    yunit = '(cc)'
 end
 
 % Define constructor/destructor function
@@ -93,6 +96,12 @@ methods
                 obj.legend = varargin{i+1};
             elseif strcmpi(varargin{i}, 'bins')
                 obj.bins = varargin{i+1};
+            elseif strcmpi(varargin{i}, 'xlabel')
+                obj.xlabel = varargin{i+1};
+            elseif strcmpi(varargin{i}, 'ylabel')
+                obj.ylabel = varargin{i+1};
+            elseif strcmpi(varargin{i}, 'yunit')
+                obj.yunit = varargin{i+1};
             end
         end
 

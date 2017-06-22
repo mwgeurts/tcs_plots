@@ -37,8 +37,10 @@ for i = 1:2:length(varargin)
         obj.type = varargin{i+1};
     elseif strcmpi(varargin{i}, 'volume')
         obj.volume = varargin{i+1};
-     elseif strcmpi(varargin{i}, 'legend')
+    elseif strcmpi(varargin{i}, 'legend')
         obj.legend = varargin{i+1};
+    elseif strcmpi(varargin{i}, 'xlabel')
+        obj.xlabel = varargin{i+1};
     end
 end
 

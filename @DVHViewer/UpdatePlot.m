@@ -39,6 +39,8 @@ for i = 1:2:length(varargin)
         obj.dvh{1} = varargin{i+1};
     elseif strcmpi(varargin{i}, 'dvhB')
         obj.dvh{2} = varargin{i+1};
+    elseif strcmpi(varargin{i}, 'xlabel')
+        obj.xlabel = varargin{i+1};
     end
 end
 
@@ -100,7 +102,7 @@ if ~isempty(obj.legend) && length(obj.legend) == length(obj.dvh)
 end
 
 % Set x-axis label
-xlabel('Dose (Gy)');
+xlabel(obj.xlabel);
 
 % If the type is relative
 if strcmpi(obj.volume, 'relative')
@@ -112,11 +114,11 @@ if strcmpi(obj.volume, 'relative')
     if strcmpi(obj.type, 'cumulative')
         
         % Set y-axis label
-        ylabel('Cumulative Volume (%)');
+        ylabel(['Cumulative ', obj.ylabel, ' (%)']);
     else
         
         % Set y-axis label
-        ylabel('Differential Volume (%)');
+        ylabel(['Differential ', obj.ylabel, ' (%)']);
     end
     
 % If the type is absolute
@@ -126,11 +128,11 @@ else
     if strcmpi(obj.type, 'cumulative')
         
         % Set y-axis label
-        ylabel('Cumulative Volume (cc)');
+        ylabel(['Cumulative ', obj.ylabel, ' ', obj.yunit]);
     else
         
         % Set y-axis label
-        ylabel('Differential Volume (cc)');
+        ylabel(['Differential ', obj.ylabel, ' ', obj.yunit]);
     end
 end
 
