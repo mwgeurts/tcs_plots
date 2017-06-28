@@ -106,12 +106,12 @@ xlabel(obj.xlabel);
 
 % If the type is relative
 if strcmpi(obj.volume, 'relative')
-      
-    % Set the y-axis limit between 0% and 100%
-    ylim([0 100]);
-    
+
     % If the type is cumulative
     if strcmpi(obj.type, 'cumulative')
+        
+        % Set the y-axis limit between 0% and 100%
+        ylim([0 100]);
         
         % Set y-axis label
         ylabel(['Cumulative ', obj.ylabel, ' (%)']);
