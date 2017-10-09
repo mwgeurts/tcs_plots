@@ -41,10 +41,10 @@ for i = 1:2:length(varargin)
 end
 
 % Initialize empty return cell array
-obj.data = cell(size(obj.structures, 2), obj.columns);
+obj.data = cell(length(obj.structures), obj.columns);
 
 % Loop through each structure
-for i = 1:size(obj.structures, 2)
+for i = 1:length(obj.structures)
     
     % Set structure name (in color) and volume
     obj.data{i,1} = sprintf(['<html><font id="%s" color="rgb(%i,%i,%i)"', ...
