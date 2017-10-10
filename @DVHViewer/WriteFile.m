@@ -1,4 +1,4 @@
-function WriteFile(obj, filename)
+function WriteFile(obj, filename, n)
 % WriteFile saves a computed DVH to an Excel .csv file. The first row 
 % contains the file name, the second row contains column headers for each 
 % structure (including the volume in cc in parentheses), with each 
@@ -50,10 +50,10 @@ if fid > 0
     fprintf(fid, '\n');
 
     % Circshift dvh to place dose in first column
-    obj.dvh = circshift(obj.dvh, [0 1])';
+    dvh = circshift(obj.dvh{n}, [0 1])';
 
     % Write dvh contents to file
-    fprintf(fid, [repmat('%g,', 1, size(obj.dvh,1)), '\n'], obj.dvh);
+    fprintf(fid, [repmat('%g,', 1, size(dvh,1)), '\n'], dvh);
 
     % Close file handle
     fclose(fid);
@@ -77,4 +77,4 @@ if exist('Event', 'file') == 2
 end
 
 % Clear temporary variables
-clear t fid i file ext
+clear t fid i file ext dvh
